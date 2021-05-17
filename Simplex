@@ -1,0 +1,25 @@
+#Se require de dos paqeuterias
+install.packages("boot")
+install.packages("matlib")
+#Correr las paqueterias 
+library(boot)
+library(matlib)
+
+#Ejemplo de maximizacion  
+
+#Z(max)
+
+enj<-c(200,6000,3000,-200)
+
+#Matriz de coeficientes
+fat<-c(800,6000,1000,400)
+
+#restricciones de igualdad
+vitx<-c(50,3,150,100)
+vity<-c(10,10,75,100)
+vitz<-c(150,35,75,5)
+
+simplex(a=enj, A1=fat, b1=13800, A2=rbind(vitx,vity,vitz), b2=c(600,300,550), maxi=TRUE)
+
+#Ejemplo de minimizacion Z(min)
+simplex(a=enj, A1=fat, b1=13800, A2=rbind(vitx,vity,vitz), b2=c(600,300,550), maxi=FALSE)
